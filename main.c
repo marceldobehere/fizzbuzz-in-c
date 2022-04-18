@@ -3,17 +3,27 @@
 
 int main() 
 {
+    int f = 0;
+    int b = 0;
     for (int i = 1; i < 100; i++)
     {
-        if (i % 15 == 0)
-            printf("%i: FizzBuzz.", i);
-        else if (i % 3 == 0)
-            printf("%i: Fizz.", i);
-        else if (i % 5 == 0)
-            printf("%i: Buzz.", i);
-        else
-            printf("%i.", i);
-        printf("\n");
+        printf("%i", i);
+        
+        if (++f == 3)
+        {
+            printf(": Fizz");
+            f = 0;   
+        }
+        if (++b == 5)
+        {
+            if (f != 0)
+                printf(": Buzz"); // would be faster than doing 2 printf calls consecutively I think
+            else
+                printf("Buzz");
+            b = 0;
+        }
+        
+        printf(".\n");
     }
     return 0;
 }
